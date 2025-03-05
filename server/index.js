@@ -21,6 +21,10 @@ app.use(cors());
 app.use("/", userRouter);
 app.use("/", listRouter);
 
+app.get("/", (req,res) => {
+  res.json("Hello World");
+});
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.resolve(__dirname, "client", "build")));
@@ -35,3 +39,5 @@ Connection({ username, password });
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
 });
+
+module.exports = app;
